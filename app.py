@@ -67,7 +67,7 @@ st.set_page_config(
     page_title="threatlens://term-v220",
     page_icon="📟",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 st.markdown(
@@ -87,17 +87,17 @@ st.markdown(
         --alert-red: #ff3b30;
     }
 
-    /* FIX TOP HEADER OVERLAP & CLIPPING */
+    /* TOP HEADER & CONTROLS */
     header[data-testid="stHeader"] {
         background: transparent !important;
-        height: 2.5rem !important;
+        height: 2.8rem !important;
     }
     header[data-testid="stHeader"] * {
         color: var(--amber-dim) !important;
     }
 
     .block-container {
-        padding-top: 4.5rem !important;
+        padding-top: 4.2rem !important;
         padding-bottom: 3rem;
         max-width: 1200px;
     }
@@ -113,17 +113,70 @@ st.markdown(
         font-family: 'Share Tech Mono', monospace !important;
     }
 
-    /* SIDEBAR */
+    /* SIDEBAR BASE STYLING */
     [data-testid="stSidebar"] {
         background-color: #080501 !important;
         border-right: 2px solid var(--amber-dim) !important;
     }
-    [data-testid="stSidebar"] * {
+    [data-testid="stSidebar"] div,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
         color: var(--amber) !important;
         font-family: 'Share Tech Mono', monospace !important;
     }
 
-    /* CRT HEADER BAR */
+  /* RETRO CHEVRONS & ICON LEAK SUPPRESSION */
+    [data-testid="stSidebarCollapseButton"] button,
+    [data-testid="stExpandSidebar"] button {
+        color: transparent !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: transparent !important;
+        border: none !important;
+    }
+    [data-testid="stSidebarCollapseButton"] button span,
+    [data-testid="stExpandSidebar"] button span,
+    [data-testid="stSidebarCollapseButton"] svg,
+    [data-testid="stExpandSidebar"] svg {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    [data-testid="stSidebarCollapseButton"] button::after {
+        content: "«" !important;
+        color: var(--amber) !important;
+        font-family: 'Share Tech Mono', monospace !important;
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        position: absolute !important;
+        left: 6px !important;
+        top: 2px !important;
+        visibility: visible !important;
+    }
+    [data-testid="stExpandSidebar"] button::after {
+        content: "»" !important;
+        color: var(--amber) !important;
+        font-family: 'Share Tech Mono', monospace !important;
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        position: absolute !important;
+        left: 6px !important;
+        top: 2px !important;
+        visibility: visible !important;
+    }
+
+    @media (max-width: 768px) {
+        [data-testid="stSidebar"] {
+            box-shadow: 0 0 30px rgba(0,0,0,0.9) !important;
+        }
+    }
+
+    /* CRT TOP BAR */
     .crt-topbar {
         border: 2px solid var(--amber);
         padding: 10px 18px;
